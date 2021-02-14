@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Blogs.Models;
+using System.Linq;
 
 namespace Blogs.Controllers
 {
@@ -9,6 +10,6 @@ namespace Blogs.Controllers
         private BloggingContext _bloggingContext;
         public HomeController(BloggingContext db) => _bloggingContext = db;
 
-        public IActionResult Index() => View(_bloggingContext.Blogs);
+        public IActionResult Index() => View(_bloggingContext.Blogs.OrderBy(b => b.Name));
     }
 }
