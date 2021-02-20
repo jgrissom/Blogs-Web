@@ -11,5 +11,6 @@ namespace Blogs.Controllers
         public HomeController(BloggingContext db) => _bloggingContext = db;
 
         public IActionResult Index() => View(_bloggingContext.Blogs.OrderBy(b => b.Name));
+        public IActionResult AddBlog() => View();
     }
 }

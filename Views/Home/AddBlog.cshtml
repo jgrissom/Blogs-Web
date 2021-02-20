@@ -1,0 +1,11 @@
+@model Blogs.Models.Blog
+
+<div class="bg-primary m-1 p-1 text-white"><h4>Add Blog</h4></div>
+<form method="post">
+    <label asp-for="@Model.Name">Enter Url</label>
+    <input asp-for="@Model.Name" placeholder="Blog Name" />
+    <button type="submit">Create</button>
+</form>
+
+<hr />
+<a asp-action="Index">Home</a>
