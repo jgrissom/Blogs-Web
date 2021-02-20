@@ -18,13 +18,17 @@ namespace Blogs.Controllers
         {
             if (ModelState.IsValid)
             {
-                _bloggingContext.AddBlog(model);
-                return RedirectToAction("Index");
+                if (_bloggingContext.Blogs.Any(b => b.Name == model.Name))
+                {
+                    ModelState.AddModelError("", "Name must be unique");
+                }
+                else
+                {
+                    _bloggingContext.AddBlog(model);
+                    return RedirectToAction("Index");
+                }
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
     }
 }
