@@ -20,6 +20,11 @@ namespace Blogs.Models
             this.Remove(blog);
             this.SaveChanges();
         }
+        public void AddPost(Post post)
+        {
+            this.Add(post);
+            this.SaveChanges();
+        }
     }
 
     public class Blog
@@ -34,6 +39,7 @@ namespace Blogs.Models
     public class Post
     {
         public int PostId { get; set; }
+        [Required]
         public string Title { get; set; }
         public string Content { get; set; }
 

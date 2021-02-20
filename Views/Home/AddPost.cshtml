@@ -1,0 +1,14 @@
+@model Blogs.Models.Post
+
+<div class="bg-primary m-1 p-1 text-white"><h4>Add Post</h4></div>
+<form method="post" asp-action="AddPost">
+    <div asp-validation-summary="All"></div>
+    <label asp-for="@Model.Title">Enter Title</label>
+    <input asp-for="@Model.Title" placeholder="Post Title" /><br />
+    <label asp-for="@Model.Content">Enter Content</label>
+    <textarea asp-for="@Model.Content" placeholder="Post Content"></textarea><br />
+    <button type="submit">Create</button>
+</form>
+
+<hr />
+<a asp-action="Index">Home</a> | <a asp-action="BlogDetail" asp-route-id="@ViewBag.BlogId">Posts</a>
