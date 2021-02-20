@@ -25,6 +25,11 @@ namespace Blogs.Models
             this.Add(post);
             this.SaveChanges();
         }
+        public void DeletePost(Post post)
+        {
+            this.Remove(post);
+            this.SaveChanges();
+        }
     }
 
     public class Blog

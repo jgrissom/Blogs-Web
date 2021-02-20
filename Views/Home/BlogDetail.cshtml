@@ -13,7 +13,8 @@ else
         @foreach (Post post in Model.Posts)
         {
             <li>
-                @post.Title - @post.Content
+                @post.Title - @post.Content |
+                <a asp-action="DeletePost" asp-route-id="@post.PostId">Delete</a>
             </li>
         }
     </ul>
