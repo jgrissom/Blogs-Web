@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Blogs.Models
 {
@@ -19,6 +20,7 @@ namespace Blogs.Models
     public class Blog
     {
         public int BlogId { get; set; }
+        [Required]
         public string Name { get; set; }
 
         public ICollection<Post> Posts { get; set; }
