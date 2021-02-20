@@ -1,0 +1,23 @@
+@using Blogs.Models
+@model PostViewModel
+
+<div class="bg-primary m-1 p-1 text-white"><h4>@Model.blog.Name Details</h4></div>
+
+@if (Model.Posts.Count() == 0)
+{
+    <p>There are no posts</p>
+}
+else
+{
+    <ul>
+        @foreach (Post post in Model.Posts)
+        {
+            <li>
+                @post.Title - @post.Content
+            </li>
+        }
+    </ul>
+}
+
+<hr />
+<a asp-action="AddPost" asp-route-id="@Model.blog.BlogId">New Post</a>

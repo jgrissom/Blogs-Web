@@ -11,6 +11,11 @@ namespace Blogs.Controllers
         public HomeController(BloggingContext db) => _bloggingContext = db;
 
         public IActionResult Index() => View(_bloggingContext.Blogs.OrderBy(b => b.Name));
+        public IActionResult BlogDetail(int id) => View(new PostViewModel
+        {
+            blog = _bloggingContext.Blogs.FirstOrDefault(b => b.BlogId == id),
+            Posts = _bloggingContext.Posts.Where(p => p.BlogId == id)
+        });
         public IActionResult AddBlog() => View();
         [HttpPost]
         [ValidateAntiForgeryToken]

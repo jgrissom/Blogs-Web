@@ -12,7 +12,8 @@ else
         @foreach (Blog blog in Model)
         {
             <li>
-                @blog.Name | <a asp-action="DeleteBlog" asp-route-id="@blog.BlogId">Delete</a>
+                <a asp-action="BlogDetail" asp-route-id="@blog.BlogId">@blog.Name</a> | 
+                <a asp-action="DeleteBlog" asp-route-id="@blog.BlogId">Delete</a>
             </li>
         }
     </ul>
