@@ -12,5 +12,12 @@ namespace Blogs.Controllers
 
         public IActionResult Index() => View(_bloggingContext.Blogs.OrderBy(b => b.Name));
         public IActionResult AddBlog() => View();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddBlog(Blog model)
+        {
+            _bloggingContext.AddBlog(model);
+            return RedirectToAction("Index");
+        }
     }
 }
