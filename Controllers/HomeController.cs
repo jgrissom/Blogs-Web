@@ -16,11 +16,11 @@ namespace Blogs.Controllers
             blog = _bloggingContext.Blogs.FirstOrDefault(b => b.BlogId == id),
             Posts = _bloggingContext.Posts.Where(p => p.BlogId == id)
         });
-        [Authorize]
+        [Authorize(Roles = "moderate")]
         public IActionResult AddBlog() => View();
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Moderate")]
         public IActionResult AddBlog(Blog model)
         {
             if (ModelState.IsValid)
@@ -37,6 +37,7 @@ namespace Blogs.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "Moderate")]
         public IActionResult DeleteBlog(int id)
         {
             _bloggingContext.DeleteBlog(_bloggingContext.Blogs.FirstOrDefault(b => b.BlogId == id));

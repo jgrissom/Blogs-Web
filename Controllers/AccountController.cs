@@ -49,5 +49,13 @@ namespace Blogs.Controllers
             }
             return View(details);
         }
+        [AllowAnonymous]
+        public ViewResult AccessDenied() => View();
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

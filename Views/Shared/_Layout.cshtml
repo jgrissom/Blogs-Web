@@ -10,6 +10,11 @@
 <body>
     <div class="container">
         @RenderBody()
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            <hr />
+            <a asp-controller="Account" asp-action="Logout">Logout</a>
+        }
     </div>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

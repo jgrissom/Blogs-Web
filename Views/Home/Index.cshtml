@@ -12,11 +12,26 @@ else
         @foreach (Blog blog in Model)
         {
             <li>
-                <a asp-action="BlogDetail" asp-route-id="@blog.BlogId">@blog.Name</a> | 
-                <a asp-action="DeleteBlog" asp-route-id="@blog.BlogId">Delete</a>
+                <a asp-action="BlogDetail" asp-route-id="@blog.BlogId">@blog.Name</a>
+                @if (User?.Identity?.IsAuthenticated ?? true)
+                {
+                    if (User.IsInRole("moderate"))
+                    {
+                        <span> | </span><a asp-action="DeleteBlog" asp-route-id="@blog.BlogId">Delete</a>
+                    }
+                }
             </li>
         }
     </ul>
 }
-<hr />
-<a asp-action="AddBlog">New Blog</a>
+@if (User?.Identity?.IsAuthenticated ?? true)
+{
+    if (User.IsInRole("moderate"))
+    {
+        <hr />
+        <a asp-action="AddBlog">New Blog</a>
+    }
+} else {
+    <hr />
+        <a asp-controller="Account" asp-action="Login">Login</a>
+}
