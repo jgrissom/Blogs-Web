@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Blogs.Models;
 using System.Linq;
-
+using Microsoft.AspNetCore.Authorization;
 namespace Blogs.Controllers
 {
     public class HomeController : Controller
@@ -16,6 +16,7 @@ namespace Blogs.Controllers
             blog = _bloggingContext.Blogs.FirstOrDefault(b => b.BlogId == id),
             Posts = _bloggingContext.Posts.Where(p => p.BlogId == id)
         });
+        [Authorize]
         public IActionResult AddBlog() => View();
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -2,6 +2,9 @@
   "Data": {
     "Blog": {
       "ConnectionString": "Server=bitsql.wctc.edu;Database=Blogs_##_XXX;User ID=YYY;Password=ZZZ"
+    },
+    "AppIdentity": {
+      "ConnectionString": "Server=bitsql.wctc.edu;Database=XXX_Identity_##;User ID=YYY;Password=ZZZ"
     }
   },
   "_comment": {
