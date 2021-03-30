@@ -20,6 +20,7 @@ namespace Blogs.Controllers
         public IActionResult AddBlog() => View();
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public IActionResult AddBlog(Blog model)
         {
             if (ModelState.IsValid)
